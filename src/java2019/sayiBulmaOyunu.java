@@ -53,7 +53,7 @@ public class sayiBulmaOyunu implements WindowListener, ActionListener {
     private boolean checkNumber(int num) {
         int[] a = getDigits(num);
         for (int i = 0; i < 4; i++) {
-            for (int y = i + 1; y < 3; y++) {
+            for (int y = i + 1; y < 4; y++) {
                 if (a[i] == a[y]) {
 //                    System.out.println("trig");
                     return true;
@@ -72,11 +72,11 @@ public class sayiBulmaOyunu implements WindowListener, ActionListener {
 
                 if (i == y && random[i] == number[y]) {
                     offset++;
-                }else{
-                if (random[i] == number[y]) {
+                }
+                if (i!=y && random[i] == number[y]) {
                     offset--;
                 }
-                }
+
 //                System.out.println(i + " " + y + " "+ random[i] + " " +number[y] +" offset: "+offset);
             }
         }
