@@ -48,13 +48,21 @@ public class exchange implements WindowListener, ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-        String s = inTL.getText();
-        int num;
+        String tl = inTL.getText();
+        String  usd = inUSD.getText();
+        double numTl = 0,numUsd = 0;
         try {
-            num = Integer.parseInt(s);
-            
+            numTl = Double.parseDouble(tl);
+            numUsd = Double.parseDouble(usd);
         } catch (Exception ex) {
             System.out.println("Lütfen sadece rakkam girdiğinizden emin olun..!!!");
+        }
+        if(e.getSource() == buttonTL){
+
+            inUSD.setText(String.valueOf(numTl/5.4));
+        }
+        if(e.getSource() == buttonUSD){
+            inTL.setText(String.valueOf(numUsd*5.4));
         }
 
     }
