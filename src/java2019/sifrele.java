@@ -8,7 +8,7 @@ public class sifrele implements WindowListener, ActionListener {
     Panel b;
     TextArea t1,t2;
     Button d1,d2;
-    String abc = "abcçdefghýijklmnoöprsþtuüvyzABCÇDEFGHIÝJKLMNOÖPRSÞTUÜVYZ";
+    String abc = "abcÃ§defghÄŸijklmnoÃ¶prsÅŸtuÃ¼vyzABCÃ‡DEFGHIÄ°JKLMNOÃ–PRSÅžTUÃœVYZ";
     String[] cba = new String[56];
     public sifrele() {
         a = new Frame();
@@ -18,7 +18,7 @@ public class sifrele implements WindowListener, ActionListener {
 
         b.add(t1);
         d1 = new Button("Sifrele");
-        d2 = new Button("Sifre Cöz");
+        d2 = new Button("Sifre Cï¿½z");
 
         b.add(d1);
         b.add(d2);
@@ -94,13 +94,13 @@ public class sifrele implements WindowListener, ActionListener {
 
     public void actionPerformed(ActionEvent e) {
        if(e.getSource() == d1){
-    	   //þifrele
+    	   //ï¿½ifrele
     	   String txt = t1.getText();
     	   t2.setText(sifreKoy(txt));
     	   
        }
        if(e.getSource() == d2){
-    	   //sifrecöz  
+    	   //sifrecï¿½z  
     	   String txt = t2.getText();
     	   t1.setText(sifreCoz(txt));
        }
