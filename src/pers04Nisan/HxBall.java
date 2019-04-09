@@ -20,7 +20,9 @@ class hxCanvas extends Canvas implements KeyListener {
     int goalSpace;
     boolean gk1_up, gk1_down, gk2_up, gk2_down;
     int score1,score2;
+    Ball b;
     hxCanvas(int w, int h) {
+        b = new Ball(w,h,10);
         score1 = 0;
         score2 = 0;
         gk1_up = false;
@@ -44,30 +46,21 @@ class hxCanvas extends Canvas implements KeyListener {
 
         ball.w = 20;
         ball.h = 20;
-        while (true) {
-            double rand = Math.random() * Math.PI * 2;
-            System.out.println(rand);
-            int v = (int) (Math.random() * 10);
-            vitesseX = (int) (v * Math.cos(rand));
-            vitesseY = (int) (v * Math.sin(rand));
-            if ((vitesseY > 1 || vitesseY < -1) && (vitesseX > 1 || vitesseX < -1)) {
-                break;
-            }
-        }
+
     }
 
     public void paint(Graphics p) {
-        p.setColor(Color.red);
-        p.fillOval(ball.x, ball.y, ball.w, ball.h);
+        b.drawBall(p);
         p.setColor(Color.black);
         p.drawLine(goalSpace, 0, goalSpace, ecranH);
+        p.drawLine(0, ecranH, ecranW, ecranH);
         p.drawLine(ecranW - goalSpace, 0, ecranW - goalSpace, ecranH);
         p.fillRect(player1.x, player1.y, player1.w, player1.h);
         p.fillRect(player2.x, player2.y, player2.w, player2.h);
         p.drawString("p1:"+score1,10,10);
         p.drawString("p2:"+score2,ecranW-40,10);
 
-        updateBall();
+
         updateGoalkeeper();
         try {
             Thread.sleep(20);
@@ -181,7 +174,7 @@ public class HxBall implements WindowListener {
         k = new hxCanvas(800, 450);
         a.addWindowListener(this);
         a.add(k);
-        a.setSize(800, 450);
+        a.setSize(800, 500);
         a.setResizable(false);
         a.setVisible(true);
     }
